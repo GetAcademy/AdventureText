@@ -8,7 +8,7 @@ namespace AdventureText
     public class Player : EntityWithInventory
     {
         public Room CurrentRoom { get; private set; }
-        private List<Key> _keys;
+        private readonly List<Key> _keys;
 
         public Player(Room startRoom)
         {
