@@ -6,5 +6,11 @@ namespace AdventureText
 {
     public class Key : PickupableThing
     {
+        public string Color { get; }
+
+        public Key(string color)
+        {
+            Color = color;
+        }
     }
 }

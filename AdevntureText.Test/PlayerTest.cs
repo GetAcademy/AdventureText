@@ -7,7 +7,7 @@ namespace AdventureText.Test
         [Test]
         public void TestPlayerTakeThing()
         {
-            var key = new Key();
+            var key = new Key("red");
             var player = new Player(new Room("A"));
             player.AddToInventory(key);
             Assert.AreEqual(1, player.Inventory.Count);
@@ -17,7 +17,7 @@ namespace AdventureText.Test
         [Test]
         public void TestPlayerDropThing()
         {
-            var key = new Key();
+            var key = new Key("red");
             var player = new Player(new Room("A"));
             player.AddToInventory(key);
             player.RemoveFromInventory(key);

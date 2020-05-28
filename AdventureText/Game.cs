@@ -17,11 +17,11 @@ namespace AdventureText
             var roomD = new Room("D");
             var roomE = new Room("E");
             var roomF = new Room("F");
-            roomA.Connect(roomB);
-            roomA.Connect(roomD);
-            roomB.Connect(roomC);
-            roomB.Connect(roomE);
-            roomE.Connect(roomF);
+            roomA.Connect(roomB, "rød");
+            roomA.Connect(roomD, "grønn");
+            roomB.Connect(roomC, "grå");
+            roomB.Connect(roomE, "blå");
+            roomE.Connect(roomF, "hvit");
 
             _rooms = new List<Room>();
             _rooms.Add(roomA);
@@ -32,6 +32,8 @@ namespace AdventureText
         {
             if (command == "exit") return false;
             if (command.StartsWith("go ")) _player.Go(command.Substring(3));
+            if (command.StartsWith("unlock ")) _player.UnlockDoor(command.Substring(7));
+            
             return true;
         }
 

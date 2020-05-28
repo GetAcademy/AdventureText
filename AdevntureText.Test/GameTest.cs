@@ -7,7 +7,7 @@ namespace AdventureText.Test
         [Test]
         public void TestSuccessfulPickup()
         {
-            var key = new Key();
+            var key = new Key("red");
             var room = new Room("A");
             room.AddToInventory(key);
             var player = new Player(room);
@@ -20,7 +20,7 @@ namespace AdventureText.Test
         [Test]
         public void TestUnsuccessfulPickup()
         {
-            var key = new Key();
+            var key = new Key("red");
             var room = new Room("a");
             var player = new Player(room);
             var game = new Game();

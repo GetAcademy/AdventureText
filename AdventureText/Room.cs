@@ -21,21 +21,20 @@ namespace AdventureText
             return $"Du er i rom {Name}. ";
         }
 
-        public void Connect(Room roomB)
+        public void Connect(Room roomB, string color)
         {
-            var door = new Door(this, roomB);
+            var door = new Door(this, roomB, color);
             this._doors.Add(door);
             roomB._doors.Add(door);
         }
 
         public Room Go(string roomName)
         {
-            var door = FindDoor(roomName);
-            if (door == null) return this;
-            return door.GetOtherRoom(this);
+            var door = GetDoorByRoomName(roomName);
+            return door?.GoThroughDoor(this) ?? this;
         }
 
-        private Door FindDoor(string roomName)
+        private Door GetDoorByRoomName(string roomName)
         {
             return _doors.FirstOrDefault(d => d.HasRoom(roomName));
             //foreach (var door in _doors)
@@ -43,6 +42,11 @@ namespace AdventureText
             //    if (door.HasRoom(roomName)) return door;
             //}
             //return null;
+        }
+
+        public Door GetDoorByColor(string keyColor)
+        {
+            return _doors.FirstOrDefault(d => d.Color == keyColor);
         }
     }
 }
