@@ -8,7 +8,7 @@ namespace AdventureText.Test
         public void TestPutThingInRoom()
         {
             var key = new Key();
-            var room = new Room();
+            var room = new Room("A");
             room.AddToInventory(key);
             Assert.AreEqual(1, room.Inventory.Count);
         }

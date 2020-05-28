@@ -8,9 +8,9 @@ namespace AdventureText.Test
         public void TestSuccessfulPickup()
         {
             var key = new Key();
-            var room = new Room();
+            var room = new Room("A");
             room.AddToInventory(key);
-            var player = new Player();
+            var player = new Player(room);
             var game = new Game();
             game.PickupThingFromRoom(key, player, room);
             Assert.AreEqual(0, room.Inventory.Count);
@@ -21,8 +21,8 @@ namespace AdventureText.Test
         public void TestUnsuccessfulPickup()
         {
             var key = new Key();
-            var room = new Room();
-            var player = new Player();
+            var room = new Room("a");
+            var player = new Player(room);
             var game = new Game();
             game.PickupThingFromRoom(key, player, room);
             Assert.AreEqual(0, room.Inventory.Count);

@@ -7,11 +7,22 @@ namespace AdventureText
     public class Game
     {
         private List<Room> _rooms;
-        private Player _player;
+        private readonly Player _player;
 
         public Game()
         {
             var roomA = new Room("A");
+            var roomB = new Room("B");
+            var roomC = new Room("C");
+            var roomD = new Room("D");
+            var roomE = new Room("E");
+            var roomF = new Room("F");
+            roomA.Connect(roomB);
+            roomA.Connect(roomD);
+            roomB.Connect(roomC);
+            roomB.Connect(roomE);
+            roomE.Connect(roomF);
+
             _rooms = new List<Room>();
             _rooms.Add(roomA);
             _player = new Player(roomA);
@@ -20,6 +31,7 @@ namespace AdventureText
         public bool HandleCommand(string command)
         {
             if (command == "exit") return false;
+            if (command.StartsWith("go ")) _player.Go(command.Substring(3));
             return true;
         }
 
