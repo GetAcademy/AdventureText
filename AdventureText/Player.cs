@@ -6,6 +6,11 @@ namespace AdventureText
 {
     public class Player : EntityWithInventory
     {
-        
+        public Room CurrentRoom { get; }
+
+        public Player(Room startRoom)
+        {
+            CurrentRoom = startRoom;
+        }
     }
 }
