@@ -31,8 +31,15 @@ namespace AdventureText
             return _rooms.First(r => r != room);
         }
 
-        public void Unlock()
+        public void Unlock(Key key)
         {
+            if (key.Color != Color) return;
+            //if (key is KeyWithChallenge)
+            //{
+            //    var keyWithChallenge = (KeyWithChallenge)key;
+            //    keyWithChallenge.DoChallenge();
+            //}
+            if (!key.IsUnlockApproves()) return;
             _isOpen = true;
         }
     }

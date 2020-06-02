@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AdventureText
 {
-    public class EntityWithInventory
+    public abstract class EntityWithInventory
     {
         public List<PickupableThing> Inventory { get; set; }
 

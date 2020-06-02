@@ -12,5 +12,10 @@ namespace AdventureText
         {
             Color = color;
         }
+
+        public virtual bool IsUnlockApproves()
+        {
+            return true;
+        }
     }
 }

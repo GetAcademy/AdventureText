@@ -14,7 +14,7 @@ namespace AdventureText
         {
             CurrentRoom = startRoom;
             _keys = new List<Key>();
-            _keys.Add(new Key("rød"));
+            _keys.Add(new KeyWithChallenge("rød"));
         }
 
         public void Go(string roomName)
@@ -22,13 +22,13 @@ namespace AdventureText
             CurrentRoom = CurrentRoom.Go(roomName);
         }
 
-        public void UnlockDoor(string keyColor)
+        public void UnlockDoor(string color)
         {
-            var hasCorrectKey = _keys.Any(k => k.Color == keyColor);
-            if (!hasCorrectKey) return;
-            var door = CurrentRoom.GetDoorByColor(keyColor);
+            var key = _keys.FirstOrDefault(k => k.Color == color);
+            if (key == null) return;
+            var door = CurrentRoom.GetDoorByColor(color);
             if (door == null) return;
-            door.Unlock();
+            door.Unlock(key);
         }
     }
 }
