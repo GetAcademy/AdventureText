@@ -9,7 +9,10 @@ namespace AdventureText
         private List<Room> _rooms;
         private readonly Player _player;
 
-        public Game()
+        private static Game _instance;
+        public static Game Instance => _instance ??= new Game();
+
+        private Game()
         {
             var roomA = new Room("A");
             var roomB = new Room("B");
@@ -33,7 +36,7 @@ namespace AdventureText
             if (command == "exit") return false;
             if (command.StartsWith("go ")) _player.Go(command.Substring(3));
             if (command.StartsWith("unlock ")) _player.UnlockDoor(command.Substring(7));
-            
+
             return true;
         }
 
@@ -66,6 +69,13 @@ namespace AdventureText
             }
 
             Console.WriteLine("Takk for at du spilte AdventureText. Velkommen tilbake!");
+        }
+
+        public string AskUser(string question)
+        {
+            Console.Write(question);
+            var answer = Console.ReadLine();
+            return answer;
         }
     }
 }

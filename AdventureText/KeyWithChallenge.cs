@@ -14,9 +14,7 @@ namespace AdventureText
 
         public override bool IsUnlockApproves()
         {
-            Console.Write("Hva er 2+2? ");
-            var answer = Console.ReadLine();
-            return answer == "4";
+            return "4" == Game.Instance.AskUser("Hva er 2+2? ");
         }
     }
 }
